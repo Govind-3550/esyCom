@@ -1,11 +1,15 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navBar";
+import "./boco.min.css";
+import FooterSection from './components/footerSection';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
+});<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -26,6 +30,7 @@ export default function RootLayout({ children }) {
         <div className="max-w-[1440px] mx-auto">
         <Navbar></Navbar>
         {children}
+        <FooterSection></FooterSection>
         </div>
        
       </body>

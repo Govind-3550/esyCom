@@ -362,6 +362,91 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBrandLogoBrandLogo extends Schema.CollectionType {
+  collectionName: 'brand_logos';
+  info: {
+    displayName: 'brandLogo';
+    pluralName: 'brand-logos';
+    singularName: 'brand-logo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brandsImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::brand-logo.brand-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::brand-logo.brand-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLogoLogo extends Schema.CollectionType {
+  collectionName: 'logos';
+  info: {
+    displayName: 'logo';
+    pluralName: 'logos';
+    singularName: 'logo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brands: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMediatestMediatest extends Schema.CollectionType {
+  collectionName: 'mediatests';
+  info: {
+    displayName: 'mediatest';
+    pluralName: 'mediatests';
+    singularName: 'mediatest';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::mediatest.mediatest',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    mediatesting: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::mediatest.mediatest',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavbarNavbar extends Schema.SingleType {
   collectionName: 'navbars';
   info: {
@@ -423,6 +508,58 @@ export interface ApiProductProduct extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    displayName: 'test';
+    pluralName: 'tests';
+    singularName: 'test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    Govind: Attribute.String;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTest2Test2 extends Schema.CollectionType {
+  collectionName: 'test2s';
+  info: {
+    displayName: 'test2';
+    pluralName: 'test2s';
+    singularName: 'test2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test2.test2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    gbvtest: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::test2.test2',
       'oneToOne',
       'admin::user'
     > &
@@ -866,8 +1003,13 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::brand-logo.brand-logo': ApiBrandLogoBrandLogo;
+      'api::logo.logo': ApiLogoLogo;
+      'api::mediatest.mediatest': ApiMediatestMediatest;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::product.product': ApiProductProduct;
+      'api::test.test': ApiTestTest;
+      'api::test2.test2': ApiTest2Test2;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

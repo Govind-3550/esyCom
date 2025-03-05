@@ -1,7 +1,11 @@
 import Image from 'next/image';
-
+import BrandPartners from './components/brandsConting';
+import Carousel from './components/courosel';
+import ServicesD2C from './components/serviced2c';
+import CaseStudies from './components/caseStudies';
 export default function Home() {
   return (
+    <>
     <section className="section_homepage--frame-d2c flex gap-8 bg-white pl-[120px] pr-0 xl:gap-8">
       <div className="mobile-right-frame hidden">
         <Image
@@ -54,13 +58,14 @@ export default function Home() {
               </div>
             </div>
             <div className="left-frame-button-d2c ">
-              <div className="w-layout-hflex flex-block-6 flex justify-center items-center gap-6 max-w-full mx-auto p-1.75 px-12 text-center border-0 border-solid border-[#060237] border-t-[#060237] border-r-[#060237] border-b-[#060237] border-l rounded-full ">
+              <div className="w-layout-hflex flex-block-6 flex gap-3.5 lg:flex-row lg:gap-3.5 lg:ml-0 lg:mr-0">
                 <a
                   href="/audit-request-form"
-                  className="button-d2c-1 btn3-d2ccc topbtn flex justify-start items-center gap-0 mx-auto md:mx-auto py-4 px-12 border-2 border-solid border-blue-1-techd2c bg-white text-white rounded-full text-center flex-shrink-0 max-w-full"
+                  className="button-d2c-1 btn3-d2ccc topbtn flex items-center justify-start gap-0 px-12 py-4 border border-[#060237] bg-transparent text-center rounded-[48px] flex-shrink-0 max-w-full text-decoration-none text-transparent 
+  lg:border "
                 >
-                  <div className="text-d2cxx text-2-d2c">Audit My Website</div>
-                  <div className="arrow-div-d2c nxt">
+                  <div className="text-d2cxx text-2-d2c flex items-center text-center text-[16px] not-italic no-underline whitespace-normal border-0 lg:text-[#060237] lg:font-medium">Audit My Website</div>
+                  <div className="arrow-div-d2c nxt hidden bg-[#68505000] items-center mb-0 pb-0 nxt:block">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="36"
@@ -84,10 +89,10 @@ export default function Home() {
                 <a
                   href="https://qui8d48qnm9.typeform.com/to/CirpyVmQ"
                   target="_blank"
-                  className="button-d2c-1 ttu flex justify-center items-center gap-6 mx-auto py-2.5 px-8 rounded-full text-white text-center bg-blue-2-techd2c border-0 border-solid flex-shrink-0 max-w-full order-1"
+                  className="button-d2c-1 ttu order-1 w-[200px] ml-0 mr-0 bg-[#140152] text-center border-solid border-0 rounded-[48px] flex-shrink-0 justify-center items-center max-w-full p-[7px_7px_7px_32px] no-underline flex sm:gap-[42px] md:gap-[42px] border-black text-transparent"
                 >
-                  <div className="text-d2cxx talk-us-d2c flex items-center text-white text-center text-lg font-bold md:font-medium">Talk to Us</div>
-                  <div className="arrow-d2c flex justify-center items-start self-stretch max-w-full mb-0 bg-[#63565600] text-center">
+                  <div className="text-d2cxx talk-us-d2c text-white whitespace-normal text-center border-0 flex flex-row items-center text-[16px] not-italic no-underline sm:font-medium">Talk to Us</div>
+                  <div className="arrow-d2c bg-[#68505000] justify-center items-center mb-0 pb-0 flex">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="48"
@@ -125,5 +130,21 @@ export default function Home() {
         />
       </div>
     </section>
+    <BrandPartners></BrandPartners>
+    <Carousel></Carousel>
+    <ServicesD2C></ServicesD2C>
+    <CaseStudies></CaseStudies>
+    <section className="section_ctc-d2c ctc-mobile">
+          <div className="div-block-22">
+            <div className="subtitle-h1-center-aligned">Faster Websites. Higher conversion. More revenue.</div>
+          </div>
+          <div className="marquee2-d2c">
+            <div className="inner-marquee2-d2c" style={{ transform: "translate3d(-1072.49px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)", transformStyle: "preserve-3d", willChange: "transform" }}>
+              <div className="text-block-55 ctc-txt">Faster Websites. Higher conversion. More revenue.</div>
+              <div className="text-block-55">Faster Websites. Higher conversion. More revenue.</div>
+            </div>
+          </div>
+        </section>
+    </>
   );
 }

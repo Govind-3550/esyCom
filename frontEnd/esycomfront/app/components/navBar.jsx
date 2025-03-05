@@ -1,133 +1,180 @@
 "use client";
-import { useState } from "react";
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
+  const [activeLink, setActiveLink] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScreenWide, setIsScreenWide] = useState(false);
+  const [overlayClass, setOverlayClass] = useState('');
+
+  const handleLinkClick = (href) => {
+    setActiveLink(href);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Detect window resize and update state for screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenWide(window.innerWidth > 990);
+    };
+
+    // Initial check on mount
+    handleResize();
+
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Handle overlay animation when menu state changes
+  useEffect(() => {
+    if (isMenuOpen) {
+      setOverlayClass("block curtain-overlay");
+    } else {
+      setOverlayClass("hidden curtain-overlay-close");
+    }
+  }, [isMenuOpen]);
+
   return (
-    <div className="flex justify-center items-center min-h-auto py-[24px] px-[80px] bg-[#fff]">
-      <div className="grid gap-2 flex-1 grid-rows-auto grid-cols-[auto_1fr_auto] place-content-stretch max-w-full items-center w-full h-full mx-0">
-        {/* Logo */}
+    <div
+      data-collapse="medium"
+      data-animation="default"
+      data-duration="400"
+      fs-scrolldisable-element="smart-nav"
+      data-easing="ease"
+      data-easing2="ease"
+      role="banner"
+      className="navbar_component nav_comp-d2c w-nav"
+    >
+      <div className="navbar_container nav-container-d2c">
         <Link
           href="/"
-          className="pl-0 float-left text-gray-800 no-underline relative border-black bg-transparent antialiased"
+          className="navbar_logo-link w-nav-brand"
+          aria-label="home"
         >
-          <div className="text-[#060237] text-[36px] text-left tracking-[-1.44px] flex flex-row flex-0 font-extrabold leading-[120%] no-underline">
-            boco
-          </div>
+          <div className="boco-logo-d2c">boco</div>
         </Link>
-
-        {/* Navbar Links for Desktop */}
-        <nav className="border-[#d3c3f8]  rounded-[48px] pt-1.5 pr-1.5 justify-self-center border  p-1.5 justify-center items-center flex static float-right">
+        <nav
+          role="navigation"
+          id="w-node-_1018ab4f-fd63-5dc3-a791-3617ebdcae2f-ebdcae2a"
+          className={`navbar_menu is-page-height-tablet nav-menu-d2c w-nav-menu ${
+            isMenuOpen ? "block" : "hidden"
+          } ${isScreenWide ? "hidden" : ""}`}
+        >
           <Link
-            href="/"
-            className="border border-transparent font-bold transition-colors duration-300 ease-[cubic-bezier(.165,.84,.44,1)] block relative mx-auto align-top text-[#140152] text-[16px] text-left tracking-normal capitalize px-7 py-2 leading-6 no-underline"
+            href="/boco-shopify-store-build"
+            className={`navbar_link link-1-d2c w-nav-link ${
+              activeLink === "/boco-shopify-store-build" ? "w--current" : ""
+            }`}
+            onClick={() => handleLinkClick("/boco-shopify-store-build")}
           >
-            Shopify Store Build
+            Shopify store build
           </Link>
           <Link
             href="/custom-shopify-landing-page"
-            className="text-[#140152] text-left tracking-normal capitalize px-7 py-2 leading-6 no-underline text-[16px] border border-transparent text-sm font-bold transition-colors duration-300 ease-[cubic-bezier(.165,.84,.44,1)] block relative align-top ml-auto mr-auto p-5 bg-transparent"
+            className={`navbar_link link-1-d2c w-nav-link ${
+              activeLink === "/custom-shopify-landing-page" ? "w--current" : ""
+            }`}
+            onClick={() => handleLinkClick("/custom-shopify-landing-page")}
           >
-            Landing Page Design
+            Landing page design
           </Link>
           <Link
             href="/case-studies"
-            className="text-[#140152] text-left tracking-normal capitalize px-7 py-2 leading-6 no-underline text-[16px] border border-transparent text-sm font-bold transition-colors duration-300 ease-[cubic-bezier(.165,.84,.44,1)] block relative align-top ml-auto mr-auto p-5 bg-transparent"
+            className={`navbar_link link-1-d2c w-nav-link ${
+              activeLink === "/case-studies" ? "w--current" : ""
+            }`}
+            onClick={() => handleLinkClick("/case-studies")}
           >
-            Case Studies
+            Case studies
           </Link>
         </nav>
-
-        {/* Talk to Us Button */}
-        <div className="justify-self-end gap-4 ml-0 flex">
-          <div className="text-left flex-none order-0 justify-between self-auto flex">
-            <a
+        <div className="navbar_button-wrapper">
+          <div className="hide-tablet hide-tab-d2c">
+            <Link
               href="https://qui8d48qnm9.typeform.com/to/CirpyVmQ"
-              className="max-h-14 inline-flex bg-[#140152] text-center border-solid border-0 border-black rounded-full flex-shrink-0 justify-center items-center gap-6 max-w-full mx-auto pt-[7px] pr-[7px] pb-[7px] pl-[32px] text-white "
+              className="button-d2c-1 talk-btn-d2c navbar-top-btn w-inline-block"
             >
-              <span className="clear-none aspect-auto text-white text-center border-0 flex flex-row items-center text-[16px] font-normal text-decoration-none"> 
-                Talk to Us
-              </span>
-              <div className="bg-[#68505000] justify-center items-center mb-0 pb-0 flex">
-              <div className="text-center bg-[#63565600] justify-center self-stretch items-start max-w-full mb-0 flex">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                >
-                  <circle cx="24" cy="24" r="24" fill="white" />
-                  <mask
-                    id="mask0"
-                    maskUnits="userSpaceOnUse"
-                    x="12"
-                    y="12"
-                    width="24"
-                    height="24"
+              <div className="text-d2cxx talk-us-d2c">Talk to Us</div>
+              <div className="arrow-div-d2c">
+                <div className="arrow-d2c w-embed">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
                   >
-                    <rect x="12" y="12" width="24" height="24" fill="#FFFF61" />
-                  </mask>
-                  <g mask="url(#mask0)">
+                    <circle cx="24" cy="24" r="24" fill="white"></circle>
                     <path
-                      d="M18.294 29.644L17.25 28.6L27.09 18.75H18.144V17.25H29.644V28.75H28.144V19.804L18.294 29.644Z"
+                      d="M18.2942 29.6442L17.25 28.6L27.0904 18.75H18.1442V17.25H29.6442V28.75H28.1442V19.8038L18.2942 29.6442Z"
                       fill="#060237"
-                    />
-                  </g>
-                </svg>
+                    ></path>
+                  </svg>
+                </div>
               </div>
+            </Link>
+          </div>
+          <div
+            className="navbar_menu-button w-nav-button"
+            onClick={toggleMenu}
+            role="button"
+            aria-expanded={isMenuOpen}
+          >
+            <div className="menu-icon2 menu-icon-d2c">
+              <div className="menu-icon_line-top top-line-d2c"></div>
+              <div className="menu-icon_line-middle middle-line-d2c">
+                <div className="menu-icon_line-middle-inner"></div>
               </div>
-            </a>
+              <div className="menu-icon_line-bottom bottom-line-d2c"></div>
+            </div>
           </div>
         </div>
-
-        {/* Hamburger Menu (Mobile) */}
-        <div className="md:hidden">
-          <button className="text-white" onClick={toggleMenu}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
+        <div className="show-tablet">
+          <Link
+            href="https://qui8d48qnm9.typeform.com/to/CirpyVmQ"
+            className="button-arrow-wrapper s-arrow-d2c w-inline-block"
+          >
+            <div className="button-arrow s1-arrow-d2c w-embed">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.29423 17.6442L5.25003 16.6L15.0904 6.74995H6.14426V5.25H17.6442V16.75H16.1443V7.80378L6.29423 17.6442Z"
+                  fill="#fff"
+                ></path>
+              </svg>
+            </div>
+          </Link>
         </div>
       </div>
-
-      {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-gray-800 ${isMenuOpen ? "block" : "hidden"}`}
+        className={`w-nav-overlay ${overlayClass} ${isScreenWide ? 'hidden' : ''}`}
       >
-        <a
-          href="/boco-shopify-store-build"
-          className="block text-white px-4 py-2"
+        <nav
+          role="navigation"
+          className="pr-0 lg:hidden md:rounded-none md:w-full md:h-auto md:px-16 md:pl-20 bg-white text-inherit border-b border-black justify-center p-5 pb-10 overflow-auto is-page-height-tablet nav-menu-d2c md:relative items-center"
         >
-          Shopify Store Build
-        </a>
-        <a
-          href="/custom-shopify-landing-page"
-          className="block text-white px-4 py-2"
-        >
-          Landing Page Design
-        </a>
-        <a href="/case-studies" className="block text-white px-4 py-2">
-          Case Studies
-        </a>
+          <Link href="/boco-shopify-store-build" className="navbar_link link-1-d2c w-nav-link">
+            Shopify store build
+          </Link>
+          <Link href="/custom-shopify-landing-page" className="navbar_link link-1-d2c w-nav-link">
+            Landing page design
+          </Link>
+          <Link href="/case-studies" className="navbar_link link-1-d2c w-nav-link">
+            Case studies
+          </Link>
+        </nav>
       </div>
     </div>
   );

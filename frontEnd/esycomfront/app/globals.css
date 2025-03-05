@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+} */
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -13,7 +17,7 @@
     --foreground: #ededed;
   }
 }
-
+/* 
 body {
   color: var(--foreground);
   background: var(--background);
@@ -23,16 +27,85 @@ body {
   margin: 0;
   font-size: 14px;
   line-height: 20px
-}
+} */
 
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
-*{
+/* *{
   margin: 0;
   box-sizing: border-box;
   padding:0;
   -webkit-font-smoothing: antialiased;
   font-family: Plus Jakarta Sans, sans-serif;
+} */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
+
+.marquee {
+  display: flex;
+  animation: marquee 10s linear infinite;
+}
+
+@media (max-width: 765px) {
+
+  .section-11{
+    flex-direction: column !important;
+  }
+
+  .responsiveBtn{
+    padding-right: 6rem;
+  }
+
+}
+/* Initial styles for the curtain overlay */
+.curtain-overlay, .curtain-overlay-close {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+  overflow: hidden;
+  transition: transform 0.6s ease-out; /* Use transition for smooth animation */
+}
+
+/* Animation for the curtain opening */
+.curtain-overlay {
+  transform: translateY(-100%); /* Start hidden above the screen */
+  animation: curtainOpen 0.6s ease-out forwards; /* Apply opening animation */
+}
+
+/* Animation for the curtain closing */
+.curtain-overlay-close {
+  transform: translateY(0); /* Initially visible */
+  animation: curtainClose 0.6s ease-in forwards; /* Apply closing animation */
+}
+
+/* Keyframes for the curtain opening animation */
+@keyframes curtainOpen {
+  0% {
+    transform: translateY(-100%); /* Start from above the screen */
+  }
+  100% {
+    transform: translateY(0); /* End at the normal position */
+  }
+}
+
+/* Keyframes for the curtain closing animation */
+@keyframes curtainClose {
+  0% {
+    transform: translateY(0); /* Start from the visible position */
+  }
+  100% {
+    transform: translateY(100%); /* End by sliding out of the screen */
+  }
+}
+

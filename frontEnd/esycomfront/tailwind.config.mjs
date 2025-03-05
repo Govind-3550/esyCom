@@ -16,7 +16,20 @@ export default {
         'xl': '1440px', // Custom screen size for 1440px
       },
       fontFamily: {
-        custom: ['YourFontName', 'sans-serif'],
+        jakarta: ['Jakarta Sans', 'sans-serif'],
+      },
+      animation: {
+        'marquee': 'marquee 10s linear infinite', // Customize duration and speed
+      },
+      keyframes: {
+        marquee: {
+          '0%': {
+            transform: 'translate3d(100%, 0, 0)', // Start from right
+          },
+          '100%': {
+            transform: 'translate3d(-100%, 0, 0)', // End at left
+          },
+        },
       },
     },
   },

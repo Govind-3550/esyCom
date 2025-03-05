@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mediatests",
+  "info": {
+    "singularName": "mediatest",
+    "pluralName": "mediatests",
+    "displayName": "mediatest"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mediatesting": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
