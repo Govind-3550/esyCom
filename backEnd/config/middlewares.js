@@ -6,8 +6,9 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       origin: [
-        'https://esy-nutmb08gj-govind-3550s-projects.vercel.app/', // Replace with your actual Vercel frontend URL
-        'https://esycom.onrender.com', // Your Strapi production URL
+        'http://localhost:3000', // Allow local development URL
+        'https://esy-com.vercel.app', // Your deployed frontend URL
+        'https://esycom.onrender.com', // Your deployed Strapi URL
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
       allowedHeaders: ['Content-Type', 'Authorization'],
