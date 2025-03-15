@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_section_threes",
+  "info": {
+    "singularName": "home-section-three",
+    "pluralName": "home-section-threes",
+    "displayName": "HomeSectionThree",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mainHeading": {
+      "type": "text",
+      "default": "Enhance customer experience <br /> by focusing on the details   that matter most"
+    },
+    "containerImg": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "containerHeding": {
+      "type": "text",
+      "default": "Conversion Rate <br aria-hidden=\"true\"> Optimisation"
+    },
+    "firstList": {
+      "type": "json"
+    },
+    "secondContainerImg": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "secondContainerHeding": {
+      "type": "text",
+      "default": "UI / UX  <br aria-hidden=\"true\">  Design"
+    },
+    "secondList": {
+      "type": "json"
+    },
+    "thirdContainerImg": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "thirdContainerHeading": {
+      "type": "text",
+      "default": "Web <br aria-hidden=\"true\">  Development"
+    },
+    "thirdList": {
+      "type": "json"
+    }
+  }
+}

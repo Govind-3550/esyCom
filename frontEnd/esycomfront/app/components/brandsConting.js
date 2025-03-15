@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 const BrandPartners = ({ initialImages }) => {
   const [images, setImages] = useState(initialImages || []);
   const observer = useRef(null);
-
   useEffect(() => {
     if (!images.length) {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/brand-logos?populate=*`)
@@ -58,30 +58,30 @@ const BrandPartners = ({ initialImages }) => {
 
         <div className="bg-[#d3c3f8] flex-1 w-auto h-px max-w-none"></div>
       </section>
-
-      {/* Brand Logos Marquee */}
-      <section className=" bg-white   flex flex-row justify-start items-center w-full relative overflow-hidden 
-  bg-[var(--white-techd2c)] gap-0
-  
-  lg:border-t-0 lg:border-b lg:border-transparent lg:rounded-none 
-  pt-[40px] pb-[40px]">
-        <div className="relative flex items-center w-full ">
-          {/* Marquee Container */}
-          <div className="flex w-max animate-marquee whitespace-nowrap min-w-full">
-            {images.length > 0 ? (
-              [...images, ...images].map((src, index) => (
-                <img
-                  key={index}
-                  src={src}
-                  alt={`Brand Logo ${index + 1}`}
-                  className="brand-logo h-16 mx-4 mix-blend-darken"
-                  loading="lazy"
-                />
-              ))
-            ) : (
-              <p className="text-center">Loading images...</p>
-            )}
-          </div>
+      <section className="bg-white flex items-center w-full relative overflow-hidden py-10">
+        <div className="relative flex w-full overflow-hidden">
+          <motion.div
+            className="flex whitespace-nowrap min-w-max"
+            animate={{
+              x: ["0%", "-50%"], // Moves left by half its width
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 20, // Adjust speed here
+              ease: "linear",
+            }}
+          >
+            {/* Duplicating images only once to ensure seamless loop */}
+            {[...images, ...images].map((src, index) => (
+              <img
+                key={index}
+                src={src}
+                alt={`Brand Logo ${index + 1}`}
+                className="h-16 mx-2 mix-blend-darken" // Adjusted spacing for smooth loop
+                loading="lazy"
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
     </>
@@ -90,13 +90,16 @@ const BrandPartners = ({ initialImages }) => {
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/brand-logos?populate=*`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/brand-logos?populate=*`
+    );
     const data = await res.json();
-    const images = data?.data?.length > 0
-      ? data.data[0].attributes.brandsImg.data.map(
-          (img) => `${process.env.NEXT_PUBLIC_API_URL}${img.attributes.url}`
-        )
-      : [];
+    const images =
+      data?.data?.length > 0
+        ? data.data[0].attributes.brandsImg.data.map(
+            (img) => `${process.env.NEXT_PUBLIC_API_URL}${img.attributes.url}`
+          )
+        : [];
     return { props: { initialImages: images } };
   } catch (error) {
     console.error("Error fetching images on server side:", error);

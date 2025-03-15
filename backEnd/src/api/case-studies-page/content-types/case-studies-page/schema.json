@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies_pages",
+  "info": {
+    "singularName": "case-studies-page",
+    "pluralName": "case-studies-pages",
+    "displayName": "caseStudiesPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fistHeading": {
+      "type": "text",
+      "default": "Case Studies"
+    },
+    "secondHeading": {
+      "type": "text",
+      "default": "Success Stories & Results"
+    },
+    "desc": {
+      "type": "text",
+      "default": "We've worked with nearly 100 brands in different modes and capacities over the years. Here's a few of our favorite success stories."
+    },
+    "ImageSection": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "scrollerText": {
+      "type": "text",
+      "default": "Faster Websites. Higher conversion. More revenue."
+    }
+  }
+}

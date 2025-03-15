@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ navbarData }) => {
   const [activeLink, setActiveLink] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScreenWide, setIsScreenWide] = useState(false);
-  const [overlayClass, setOverlayClass] = useState('');
+  const [overlayClass, setOverlayClass] = useState("");
 
   const handleLinkClick = (href) => {
     setActiveLink(href);
@@ -58,7 +58,7 @@ const Navbar = () => {
           className="navbar_logo-link w-nav-brand"
           aria-label="home"
         >
-          <div className="boco-logo-d2c">boco</div>
+          <div className="boco-logo-d2c">{navbarData?.LogoName || "boco"}</div>
         </Link>
         <nav
           role="navigation"
@@ -74,7 +74,7 @@ const Navbar = () => {
             }`}
             onClick={() => handleLinkClick("/boco-shopify-store-build")}
           >
-            Shopify store build
+            {navbarData?.storeBuild || "Shopify store build"}
           </Link>
           <Link
             href="/custom-shopify-landing-page"
@@ -83,7 +83,7 @@ const Navbar = () => {
             }`}
             onClick={() => handleLinkClick("/custom-shopify-landing-page")}
           >
-            Landing page design
+            {navbarData?.landingPageDesign || "Landing page design"}
           </Link>
           <Link
             href="/case-studies"
@@ -92,7 +92,7 @@ const Navbar = () => {
             }`}
             onClick={() => handleLinkClick("/case-studies")}
           >
-            Case studies
+            {navbarData?.caseStudies || "Case studies"}
           </Link>
         </nav>
         <div className="navbar_button-wrapper">
@@ -101,7 +101,9 @@ const Navbar = () => {
               href="https://qui8d48qnm9.typeform.com/to/CirpyVmQ"
               className="button-d2c-1 talk-btn-d2c navbar-top-btn w-inline-block"
             >
-              <div className="text-d2cxx talk-us-d2c">Talk to Us</div>
+              <div className="text-d2cxx talk-us-d2c">
+                {navbarData?.buttonText || "Talk to Us"}
+              </div>
               <div className="arrow-div-d2c">
                 <div className="arrow-d2c w-embed">
                   <svg
@@ -159,20 +161,31 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`w-nav-overlay ${overlayClass} ${isScreenWide ? 'hidden' : ''}`}
+        className={`w-nav-overlay ${overlayClass} ${
+          isScreenWide ? "hidden" : ""
+        }`}
       >
         <nav
           role="navigation"
           className="pr-0 lg:hidden md:rounded-none md:w-full md:h-auto md:px-16 md:pl-20 bg-white text-inherit border-b border-black justify-center p-5 pb-10 overflow-auto is-page-height-tablet nav-menu-d2c md:relative items-center"
         >
-          <Link href="/boco-shopify-store-build" className="navbar_link link-1-d2c w-nav-link">
-            Shopify store build
+          <Link
+            href="/boco-shopify-store-build"
+            className="navbar_link link-1-d2c w-nav-link"
+          >
+            {navbarData?.storeBuild || "Shopify store build"}
           </Link>
-          <Link href="/custom-shopify-landing-page" className="navbar_link link-1-d2c w-nav-link">
-            Landing page design
+          <Link
+            href="/custom-shopify-landing-page"
+            className="navbar_link link-1-d2c w-nav-link"
+          >
+            {navbarData?.landingPageDesign || "Landing page design"}
           </Link>
-          <Link href="/case-studies" className="navbar_link link-1-d2c w-nav-link">
-            Case studies
+          <Link
+            href="/case-studies"
+            className="navbar_link link-1-d2c w-nav-link"
+          >
+            {navbarData?.caseStudies || "Case studies"}
           </Link>
         </nav>
       </div>

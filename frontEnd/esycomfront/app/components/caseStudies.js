@@ -1,11 +1,56 @@
+import React, { useState, useEffect } from "react";
+
 const CaseStudies = () => {
+const [mainHeading, setMainHeading] = useState("");
+const [images, setImages] = useState([]);
+const [caseStudiesBtnText, setCaseStudiesBtnText] = useState("");
+const [lastHeading, setLastHeading] = useState("");
+const [callTxt, setCallTxt] = useState("");
+const [auditTxt, setAuditTxt] = useState("");
+const [callHref, setCallHref] = useState("");
+const [auditHref, setAuditHref] = useState("");
+const [responsiveImages, setResponsiveImages] = useState([]);
+
+useEffect(() => {
+  // Define the async function to fetch data
+  const fetchData = async () => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/home-section-fours?populate=*`);  
+      const jsonData = await res.json();
+
+      // Extract main heading and images from the response
+      const data = jsonData.data[0].attributes;
+      setMainHeading(data.heading);
+      setImages(data.images.data.map(image => image.attributes.url)); 
+
+      // Extract new fields from API response
+      setCaseStudiesBtnText(data.caseStudiesBtnText);
+      setLastHeading(data.lastHeading);
+      setCallTxt(data.lastSectionBtnText.calltxt);
+      setAuditTxt(data.lastSectionBtnText.audittxt);
+      setCallHref(data.lastBtnHref.callhref);
+      setAuditHref(data.lastBtnHref.audithref);
+      
+      // Extract responsive image URLs
+      setResponsiveImages(data.responsiveImages.data.map(img => img.attributes.url));
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  // Call the fetchData function on component mount
+  fetchData();
+}, []); // Empty dependency array to call only once on mount
+let ar = [responsiveImages[0],responsiveImages[1]]
+console.log(ar)
     return (
         <>
       <section className="section_cms-d2c">
         <div className="cms-top-d2c">
           <div className="cms-info-d2c">
             <div className="case-stu-sub">
-              <div className="subtitle-h1-center-aligned">Read our recent Case Studies</div>
+              <div className="subtitle-h1-center-aligned">{mainHeading}</div>
             </div>
           </div>
         </div>
@@ -17,10 +62,10 @@ const CaseStudies = () => {
                   <a href="/case-studies/stylish-wodrobe" className="w-inline-block">
                     <img
                       loading="eager"
-                      src="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ff98a091ff2b5a6bcbb5_Frame%201261154325.png"
+                      src={`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${responsiveImages[1] || "https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ff98a091ff2b5a6bcbb5_Frame%201261154325.png"}`} 
                       alt=""
-                      sizes="(max-width: 479px) 300px, 100vw"
-                      srcSet="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ff98a091ff2b5a6bcbb5_Frame%201261154325-p-500.png 500w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ff98a091ff2b5a6bcbb5_Frame%201261154325.png 708w"
+                      sizes= "(max-width: 479px) 120vw, (max-width: 767px) 43vw, (max-width: 991px) 40vw, (max-width: 1439px) 39vw, 568px"
+                      srcSet={`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${responsiveImages[1]} 500w, ${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${responsiveImages[1]} 708w`}
                       className="image-171"
                     />
                   </a>
@@ -29,10 +74,10 @@ const CaseStudies = () => {
                   <a href="/case-studies/the-good-leaf" className="w-inline-block">
                     <img
                       loading="eager"
-                      src="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ffaf7ed43b5256ce6932_Frame%201261154394.png"
+                      src={`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${responsiveImages[0] || "https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ffaf7ed43b5256ce6932_Frame%201261154394.png"}`} 
                       alt=""
-                      sizes="(max-width: 479px) 300px, 100vw"
-                      srcSet="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ffaf7ed43b5256ce6932_Frame%201261154394-p-500.png 500w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6732ffaf7ed43b5256ce6932_Frame%201261154394.png 708w"
+                      sizes="(max-width: 479px) 120vw, (max-width: 767px) 43vw, (max-width: 991px) 40vw, (max-width: 1439px) 39vw, 568px"
+                      srcSet= {`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${responsiveImages[0]} 500w, ${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${responsiveImages[0]} 708w`}
                       className="image-171"
                     />
                   </a>
@@ -46,10 +91,10 @@ const CaseStudies = () => {
                 <a href="/case-studies/stylish-wodrobe" className="cms-link-left w-inline-block">
                   <img
                     loading="eager"
-                    src="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/673315e4525121b4443a35d4_Case%20Study%20SW%20Container.png"
+                    src={`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[0] || "https://cdn.prod.website-files.com/65ded9eabc08178230e44733/673315e4525121b4443a35d4_Case%20Study%20SW%20Container.png"}`} 
                     alt=""
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 43vw, (max-width: 991px) 40vw, (max-width: 1439px) 39vw, 568px"
-                    srcSet="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/673315e4525121b4443a35d4_Case%20Study%20SW%20Container-p-500.png 500w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/673315e4525121b4443a35d4_Case%20Study%20SW%20Container-p-800.png 800w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/673315e4525121b4443a35d4_Case%20Study%20SW%20Container-p-1080.png 1080w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/673315e4525121b4443a35d4_Case%20Study%20SW%20Container.png 1118w"
+                    srcSet = {`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[0]} 500w, ${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[0]} 800w, ${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[0]} 1080w,${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[0]} 1118w`}
                     className="image-171"
                   />
                 </a>
@@ -58,10 +103,10 @@ const CaseStudies = () => {
                 <a href="/case-studies/the-good-leaf" className="cms-link-left w-inline-block">
                   <img
                     loading="eager"
-                    src="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6733160417ca4a8acc23a05d_Case%20Study%20TGL%20Container.png"
+                    src={`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[1] || "https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6733160417ca4a8acc23a05d_Case%20Study%20TGL%20Container.png"}`} 
                     alt=""
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 43vw, (max-width: 991px) 40vw, (max-width: 1439px) 39vw, 568px"
-                    srcSet="https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6733160417ca4a8acc23a05d_Case%20Study%20TGL%20Container-p-500.png 500w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6733160417ca4a8acc23a05d_Case%20Study%20TGL%20Container-p-800.png 800w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6733160417ca4a8acc23a05d_Case%20Study%20TGL%20Container-p-1080.png 1080w, https://cdn.prod.website-files.com/65ded9eabc08178230e44733/6733160417ca4a8acc23a05d_Case%20Study%20TGL%20Container.png 1118w"
+                    srcSet = {`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[1]} 500w, ${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[1]} 800w, ${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[1]} 1080w,${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${images[1]} 1118w`}
                     className="image-171"
                   />
                 </a>
@@ -71,17 +116,17 @@ const CaseStudies = () => {
         </div>
         <div className="cms-footer-btn">
           <a href="/case-studies" className="view-case-studies w-inline-block">
-            <div className="text-block-59">View Case Studies</div>
+            <div className="text-block-59">{caseStudiesBtnText}</div>
           </a>
         </div>
       </section>
        <section className="section_container-d2c">
        <div className="container_compo-d2c">
-         <div className="subtitle-h1-center-aligned">Let’s Get Started</div>
+         <div className="subtitle-h1-center-aligned">{lastHeading}</div>
          <div className="footer-text-btn-d2c">
            <div className="footer-btn-d2c">
-             <a href="https://qui8d48qnm9.typeform.com/to/CirpyVmQ" className="button-d2c-1 book-call-d2c w-inline-block">
-               <div className="text-d2cxx talk-us-d2c">Book a Call</div>
+             <a href={callHref} className="button-d2c-1 book-call-d2c w-inline-block">
+               <div className="text-d2cxx talk-us-d2c">{callTxt}</div>
                <div className="arrow-div-d2c">
                  <div className="arrow-d2c w-embed">
                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -96,8 +141,8 @@ const CaseStudies = () => {
                  </div>
                </div>
              </a>
-             <a href="https://qui8d48qnm9.typeform.com/to/VO3HC0GQ" className="button-d2c-1 btn3-d2ccc w-inline-block">
-               <div className="text-d2cxx text-2-d2c get-free-d2c">Audit your Website</div>
+             <a href={auditHref} className="button-d2c-1 btn3-d2ccc w-inline-block">
+               <div className="text-d2cxx text-2-d2c get-free-d2c">{auditTxt}</div>
                <div className="arrow-div-d2c nxt">
                  <div className="arrow-div-d2c">
                    <div className="arrow-d2c w-embed">

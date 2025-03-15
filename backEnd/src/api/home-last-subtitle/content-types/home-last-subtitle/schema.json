@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_last_subtitles",
+  "info": {
+    "singularName": "home-last-subtitle",
+    "pluralName": "home-last-subtitles",
+    "displayName": "homeLastSubtitle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subtitlle": {
+      "type": "text",
+      "default": "Faster Websites. Higher conversion. More revenue."
+    }
+  }
+}

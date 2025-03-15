@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_section_ones",
+  "info": {
+    "singularName": "home-section-one",
+    "pluralName": "home-section-ones",
+    "displayName": "HomeSectionOne"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "text",
+      "default": "We build high-converting Shopify stores that drive Profit"
+    },
+    "subheading": {
+      "type": "text",
+      "default": "We're a leading Shopify & Shopify Plus agency who design and develop strategic ecommerce websites"
+    },
+    "list": {
+      "type": "json"
+    },
+    "buttonText": {
+      "type": "json"
+    },
+    "rightSideImg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

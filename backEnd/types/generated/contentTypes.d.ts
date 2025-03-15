@@ -392,6 +392,290 @@ export interface ApiBrandLogoBrandLogo extends Schema.CollectionType {
   };
 }
 
+export interface ApiCaseStudiesPageCaseStudiesPage
+  extends Schema.CollectionType {
+  collectionName: 'case_studies_pages';
+  info: {
+    displayName: 'caseStudiesPage';
+    pluralName: 'case-studies-pages';
+    singularName: 'case-studies-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-studies-page.case-studies-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    desc: Attribute.Text &
+      Attribute.DefaultTo<"We've worked with nearly 100 brands in different modes and capacities over the years. Here's a few of our favorite success stories.">;
+    fistHeading: Attribute.Text & Attribute.DefaultTo<'Case Studies'>;
+    ImageSection: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Attribute.DateTime;
+    scrollerText: Attribute.Text &
+      Attribute.DefaultTo<'Faster Websites. Higher conversion. More revenue.'>;
+    secondHeading: Attribute.Text &
+      Attribute.DefaultTo<'Success Stories & Results'>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::case-studies-page.case-studies-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    description: '';
+    displayName: 'footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    copyright: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    desc: Attribute.Text &
+      Attribute.DefaultTo<'We are driven by quality and we\u2019re 0 bullshit. If you think the same way, we love a good chat.'>;
+    footerRightSection: Attribute.JSON;
+    logoName: Attribute.String & Attribute.DefaultTo<'boco'>;
+    publishedAt: Attribute.DateTime;
+    socialIcon: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    socialIconHref: Attribute.JSON;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeLastSubtitleHomeLastSubtitle
+  extends Schema.CollectionType {
+  collectionName: 'home_last_subtitles';
+  info: {
+    displayName: 'homeLastSubtitle';
+    pluralName: 'home-last-subtitles';
+    singularName: 'home-last-subtitle';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-last-subtitle.home-last-subtitle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    subtitlle: Attribute.Text &
+      Attribute.DefaultTo<'Faster Websites. Higher conversion. More revenue.'>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-last-subtitle.home-last-subtitle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeSectionFourHomeSectionFour
+  extends Schema.CollectionType {
+  collectionName: 'home_section_fours';
+  info: {
+    description: '';
+    displayName: 'HomeSectionFour';
+    pluralName: 'home-section-fours';
+    singularName: 'home-section-four';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    caseStudiesBtnText: Attribute.String &
+      Attribute.DefaultTo<'View Case Studies'>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-four.home-section-four',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    heading: Attribute.Text &
+      Attribute.DefaultTo<'Read our recent Case Studies'>;
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    lastBtnHref: Attribute.JSON;
+    lastHeading: Attribute.String &
+      Attribute.DefaultTo<'Let\u2019s Get Started'>;
+    lastSectionBtnText: Attribute.JSON;
+    publishedAt: Attribute.DateTime;
+    responsiveImages: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-section-four.home-section-four',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeSectionOneHomeSectionOne extends Schema.CollectionType {
+  collectionName: 'home_section_ones';
+  info: {
+    displayName: 'HomeSectionOne';
+    pluralName: 'home-section-ones';
+    singularName: 'home-section-one';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    buttonText: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-one.home-section-one',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    heading: Attribute.Text &
+      Attribute.DefaultTo<'We build high-converting Shopify stores that drive Profit'>;
+    list: Attribute.JSON;
+    publishedAt: Attribute.DateTime;
+    rightSideImg: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    subheading: Attribute.Text &
+      Attribute.DefaultTo<"We're a leading Shopify & Shopify Plus agency who design and develop strategic ecommerce websites">;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-section-one.home-section-one',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeSectionThreeHomeSectionThree
+  extends Schema.CollectionType {
+  collectionName: 'home_section_threes';
+  info: {
+    description: '';
+    displayName: 'HomeSectionThree';
+    pluralName: 'home-section-threes';
+    singularName: 'home-section-three';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    containerHeding: Attribute.Text &
+      Attribute.DefaultTo<'Conversion Rate <br aria-hidden="true"> Optimisation'>;
+    containerImg: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-three.home-section-three',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    firstList: Attribute.JSON;
+    mainHeading: Attribute.Text &
+      Attribute.DefaultTo<'Enhance customer experience <br /> by focusing on the details   that matter most'>;
+    publishedAt: Attribute.DateTime;
+    secondContainerHeding: Attribute.Text &
+      Attribute.DefaultTo<'UI / UX  <br aria-hidden="true">  Design'>;
+    secondContainerImg: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    secondList: Attribute.JSON;
+    thirdContainerHeading: Attribute.Text &
+      Attribute.DefaultTo<'Web <br aria-hidden="true">  Development'>;
+    thirdContainerImg: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    thirdList: Attribute.JSON;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-section-three.home-section-three',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeSectionTwoHomeSectionTwo extends Schema.CollectionType {
+  collectionName: 'home_section_twos';
+  info: {
+    displayName: 'homeSectionTwo';
+    pluralName: 'home-section-twos';
+    singularName: 'home-section-two';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    carouselImg: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-section-two.home-section-two',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    desc: Attribute.Text &
+      Attribute.DefaultTo<'As Shopify Partners and a leading eCommerce Web Design Agency, we empower brands to thrive through strategic design and robust Shopify development. We bring a fresh strategic approach to your brand, focusing on delivering pixel-perfect websites, built for Conversions & Growth.'>;
+    Heading: Attribute.Text &
+      Attribute.DefaultTo<'Stunningly Crafted Shopify Solutions <br>Driven by Insights'>;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-section-two.home-section-two',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLogoLogo extends Schema.CollectionType {
   collectionName: 'logos';
   info: {
@@ -414,39 +698,6 @@ export interface ApiLogoLogo extends Schema.CollectionType {
   };
 }
 
-export interface ApiMediatestMediatest extends Schema.CollectionType {
-  collectionName: 'mediatests';
-  info: {
-    displayName: 'mediatest';
-    pluralName: 'mediatests';
-    singularName: 'mediatest';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::mediatest.mediatest',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    mediatesting: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    publishedAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::mediatest.mediatest',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiNavbarNavbar extends Schema.SingleType {
   collectionName: 'navbars';
   info: {
@@ -459,6 +710,8 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
+    buttonText: Attribute.String & Attribute.DefaultTo<'Talk To Us'>;
+    caseStudies: Attribute.String & Attribute.DefaultTo<'case studies'>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::navbar.navbar',
@@ -466,10 +719,11 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    cs: Attribute.String & Attribute.DefaultTo<'case studies'>;
-    lpd: Attribute.String & Attribute.DefaultTo<'landing page design'>;
+    landingPageDesign: Attribute.String &
+      Attribute.DefaultTo<'landing page design'>;
+    LogoName: Attribute.String & Attribute.DefaultTo<'BOCO'>;
     publishedAt: Attribute.DateTime;
-    ssb: Attribute.String & Attribute.DefaultTo<'shopify store build'>;
+    storeBuild: Attribute.String & Attribute.DefaultTo<'shopify store build'>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::navbar.navbar',
@@ -508,58 +762,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
-  info: {
-    displayName: 'test';
-    pluralName: 'tests';
-    singularName: 'test';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    Govind: Attribute.String;
-    publishedAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTest2Test2 extends Schema.CollectionType {
-  collectionName: 'test2s';
-  info: {
-    displayName: 'test2';
-    pluralName: 'test2s';
-    singularName: 'test2';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::test2.test2',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    gbvtest: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    publishedAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'api::test2.test2',
       'oneToOne',
       'admin::user'
     > &
@@ -1004,12 +1206,16 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::brand-logo.brand-logo': ApiBrandLogoBrandLogo;
+      'api::case-studies-page.case-studies-page': ApiCaseStudiesPageCaseStudiesPage;
+      'api::footer.footer': ApiFooterFooter;
+      'api::home-last-subtitle.home-last-subtitle': ApiHomeLastSubtitleHomeLastSubtitle;
+      'api::home-section-four.home-section-four': ApiHomeSectionFourHomeSectionFour;
+      'api::home-section-one.home-section-one': ApiHomeSectionOneHomeSectionOne;
+      'api::home-section-three.home-section-three': ApiHomeSectionThreeHomeSectionThree;
+      'api::home-section-two.home-section-two': ApiHomeSectionTwoHomeSectionTwo;
       'api::logo.logo': ApiLogoLogo;
-      'api::mediatest.mediatest': ApiMediatestMediatest;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::product.product': ApiProductProduct;
-      'api::test.test': ApiTestTest;
-      'api::test2.test2': ApiTest2Test2;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

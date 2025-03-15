@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,57 +55,57 @@ html {
   animation: marquee 10s linear infinite;
 }
 
-@media (max-width: 765px) {
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) {
+  .section-11 {
+    flex-direction: column !important;
+    padding-left: 85px !important;
+    padding-right: 85px;
+  }
+}
+
+@media  screen and (max-device-width: 480px) {
 
   .section-11{
     flex-direction: column !important;
-  }
-
-  .responsiveBtn{
-    padding-right: 6rem;
+    padding-left: 15px !important;
+    padding-right: 15px;
   }
 
 }
-/* Initial styles for the curtain overlay */
-.curtain-overlay, .curtain-overlay-close {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
-  overflow: hidden;
-  transition: transform 0.6s ease-out; /* Use transition for smooth animation */
-}
+@media  screen and (min-device-width: 760px) {
 
-/* Animation for the curtain opening */
-.curtain-overlay {
-  transform: translateY(-100%); /* Start hidden above the screen */
-  animation: curtainOpen 0.6s ease-out forwards; /* Apply opening animation */
-}
-
-/* Animation for the curtain closing */
-.curtain-overlay-close {
-  transform: translateY(0); /* Initially visible */
-  animation: curtainClose 0.6s ease-in forwards; /* Apply closing animation */
-}
-
-/* Keyframes for the curtain opening animation */
-@keyframes curtainOpen {
-  0% {
-    transform: translateY(-100%); /* Start from above the screen */
+  .responsiveBtnNew{
+    display: none !important;
   }
-  100% {
-    transform: translateY(0); /* End at the normal position */
-  }
+
 }
 
-/* Keyframes for the curtain closing animation */
-@keyframes curtainClose {
-  0% {
-    transform: translateY(0); /* Start from the visible position */
-  }
-  100% {
-    transform: translateY(100%); /* End by sliding out of the screen */
-  }
+
+#CRO::-webkit-scrollbar , .cms-middle-container::-webkit-scrollbar{
+  display: none; 
 }
 
+
+.home-inner-slider {
+  min-width: max-content !important;
+}
+
+.brix---slider-mask-width-388px {
+  overflow-x: auto;
+  display: flex;
+  scroll-behavior: smooth;
+}
+
+.w-nav-overlay {
+  height: 0px;
+  transition:  all 2s;
+}
+
+.w-nav-overlay.curtain-overlay{
+  height: 4663px;
+}
+
+.w-nav-overlay > nav{
+  /* transform: translateY(0px) translateX(0px); 
+  transition: height 0.5s, transform 400ms; */
+}

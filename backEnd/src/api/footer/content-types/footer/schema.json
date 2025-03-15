@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "footer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logoName": {
+      "type": "string",
+      "default": "boco"
+    },
+    "desc": {
+      "type": "text",
+      "default": "We are driven by quality and we’re 0 bullshit. If you think the same way, we love a good chat."
+    },
+    "socialIcon": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "copyright": {
+      "type": "json"
+    },
+    "footerRightSection": {
+      "type": "json"
+    },
+    "socialIconHref": {
+      "type": "json"
+    }
+  }
+}

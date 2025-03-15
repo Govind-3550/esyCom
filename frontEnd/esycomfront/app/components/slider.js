@@ -1,21 +1,28 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesPerPage, setImagesPerPage] = useState(6);
   const [isMobile, setIsMobile] = useState(false);
+  const [images, setImages] = useState([]);
 
-  const images = [
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb944f95811e3e779e6f_Card%20Image.png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb94defd4d3938d13ab8_Card%20Image-1.png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb976fa22091601dfe7e_Card%20Image-2.png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb956fa22091601dfcb6_Card%20Image-2%20(1).png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb97b6cb7fa93cf1c553_Card%20Image-3.png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb95fc86a994376369ab_Card%20Image%20(1).png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb9521e7ca61fcf73e2c_Card%20Image-1%20(1).png",
-    "https://cdn.prod.website-files.com/653b9d5d88756f8574352cb0/6729bb97474d3e3e0852c57b_Card%20Image-4.png",
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/home-section-twos?populate=*`);
+        const jsonData = await res.json();
+
+        const { Heading, desc, carouselImg } = jsonData.data[0].attributes;
+        const images = carouselImg.data.map((img) => img.attributes.url);
+        setImages(images);
+      } catch (error) {
+        console.error("Error fetching carousel data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const totalImages = images.length;
 
@@ -38,13 +45,23 @@ const Slider = () => {
     return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
+  const homeSlider = useRef();
+  const scrollAmount = 190;
+
   const handleLeftClick = () => {
-    if (currentIndex > 0) setCurrentIndex((prevIndex) => prevIndex - 1);
+    homeSlider.current.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   const handleRightClick = () => {
-    if (currentIndex < totalImages - imagesPerPage)
-      setCurrentIndex((prevIndex) => prevIndex + 1);
+    homeSlider.current.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+    // setTimeout(checkScroll, 300);
+    // Check after scroll
   };
 
   return (
@@ -73,33 +90,42 @@ const Slider = () => {
         </div>
       )}
 
-      <div className="home-slider box-border overflow-hidden w-full max-w-[1136px] flex">
+      <div
+        className="home-slider box-border overflow-hidden w-full max-w-[1136px] flex"
+        ref={homeSlider}
+      >
         <div
           className="home-inner-slider box-border flex transition-transform duration-500 justify-center"
-          style={{
-            transform: `translateX(-${(currentIndex * 100) / imagesPerPage}%)`,
-          }}
+         
         >
-          {images.slice(currentIndex, currentIndex + imagesPerPage).map((src, index) => (
-            <div
-              key={index}
-              className={`inner-slides box-border ${
-                imagesPerPage === 2 ? "w-1/2" : imagesPerPage === 3 ? "w-1/3" : "w-1/6"
-              }`}
-            >
-              <img
-                src={src}
-                loading="eager"
-                alt={`Slider image ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+          {images
+            .map((src, index) => (
+              <div
+                key={index}
+                className={`inner-slides box-border ${
+                  imagesPerPage === 2
+                    ? "w-1/2"
+                    : imagesPerPage === 3
+                    ? "w-1/3"
+                    : "w-1/6"
+                }`}
+              >
+                <img
+                  src={`${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')}${src || ""}`}
+                  loading="eager"
+                  alt={`Slider image ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
         </div>
       </div>
 
       {!isMobile && (
-        <div className="right-btn-d2c lelft-arrow-d2c" onClick={handleRightClick}>
+        <div
+          className="right-btn-d2c lelft-arrow-d2c"
+          onClick={handleRightClick}
+        >
           <div className="w-embed">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +164,10 @@ const Slider = () => {
             </div>
           </div>
 
-          <div className="right-btn-d2c lelft-arrow-d2c" onClick={handleRightClick}>
+          <div
+            className="right-btn-d2c lelft-arrow-d2c"
+            onClick={handleRightClick}
+          >
             <div className="w-embed">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

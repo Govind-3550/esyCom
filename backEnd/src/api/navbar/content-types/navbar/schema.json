@@ -12,17 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "ssb": {
+    "storeBuild": {
       "type": "string",
       "default": "shopify store build"
     },
-    "lpd": {
+    "landingPageDesign": {
       "type": "string",
       "default": "landing page design"
     },
-    "cs": {
+    "caseStudies": {
       "type": "string",
       "default": "case studies"
+    },
+    "LogoName": {
+      "type": "string",
+      "default": "BOCO"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Talk To Us"
     }
   }
 }

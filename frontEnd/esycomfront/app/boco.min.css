@@ -2202,10 +2202,10 @@ textarea.w-input,textarea.w-select {
 body {
     /* background-color: var(--blue);
     color: var(--white); */
-    font-family: Plus Jakarta Sans,sans-serif;
-    font-size: 1.125rem;
-    font-weight: 500;
-    line-height: 1.5;
+    font-family: Plus Jakarta Sans,sans-serif !important;
+    font-size: 1.125rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
 }
 
 h1 {
@@ -19913,7 +19913,7 @@ figcaption {
     .brix-containerdefault3 {
         padding-left: 0;
         padding-right: 15px;
-        overflow: visible
+         overflow: hidden ;
     }
 
     .brix-containerdefault3.landing-container {

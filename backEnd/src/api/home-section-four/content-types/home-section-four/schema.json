@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_section_fours",
+  "info": {
+    "singularName": "home-section-four",
+    "pluralName": "home-section-fours",
+    "displayName": "HomeSectionFour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "text",
+      "default": "Read our recent Case Studies"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "caseStudiesBtnText": {
+      "type": "string",
+      "default": "View Case Studies"
+    },
+    "lastHeading": {
+      "type": "string",
+      "default": "Let’s Get Started"
+    },
+    "lastSectionBtnText": {
+      "type": "json"
+    },
+    "lastBtnHref": {
+      "type": "json"
+    },
+    "responsiveImages": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

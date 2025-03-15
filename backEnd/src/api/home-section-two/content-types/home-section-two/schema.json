@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_section_twos",
+  "info": {
+    "singularName": "home-section-two",
+    "pluralName": "home-section-twos",
+    "displayName": "homeSectionTwo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Heading": {
+      "type": "text",
+      "default": "Stunningly Crafted Shopify Solutions <br>Driven by Insights"
+    },
+    "desc": {
+      "type": "text",
+      "default": "As Shopify Partners and a leading eCommerce Web Design Agency, we empower brands to thrive through strategic design and robust Shopify development. We bring a fresh strategic approach to your brand, focusing on delivering pixel-perfect websites, built for Conversions & Growth."
+    },
+    "carouselImg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
