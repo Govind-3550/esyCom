@@ -30,7 +30,7 @@ export default function Home() {
         console.log(data);
         
         // Fetch subtitle from another API
-        const subtitleRes = await fetch("http://localhost:1337/api/home-last-subtitles", {
+        const subtitleRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/home-last-subtitles`, {
           cache: "no-store",
         });
 
